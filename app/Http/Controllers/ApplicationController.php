@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Notifications\ApplicationApproved;
+use App\Notifications\ApplicationRejected;
 use \PDF;
 
 
@@ -72,6 +74,7 @@ class ApplicationController extends Controller
              'name' => 'required',
              'nid' => 'required',
              'phone' => 'required',
+             'email' => 'required',
              'gender' => 'required',
              'province' => 'required',
              'district' => 'required',
@@ -138,23 +141,30 @@ class ApplicationController extends Controller
 // ... your other methods ...
 
 public function approve(Application $application)
-    {
-        // Implement the logic to approve the application
-        $application->update(['status' => 'approved']);
+{
+    // Implement the logic to approve the application
+    $application->update(['status' => 'approved']);
 
-        // Redirect to the approved applications view
-        return redirect()->route('approved-applications.index')
-            ->with('success', 'Application approved successfully');
-    }
+    // Notify the user about the approval using the email from the application
+    $application->sendApplicationApprovedNotification();
+
+    // Redirect to the approved applications view
+    return redirect()->route('approved-applications.index')
+        ->with('success', 'Application approved successfully');
+}
 
 public function reject(Application $application)
 {
     // Implement the logic to reject the application
     $application->delete();
 
+    // Notify the user about the rejection using the email from the application
+    $application->sendApplicationRejectedNotification();
+
     return redirect()->route('apply.index')
         ->with('success', 'Application rejected successfully');
 }
+
 
 
 
@@ -197,11 +207,6 @@ public function reject(Application $application)
  }
 
 
-
-
-
-
- 
      /**
  
       * Remove the specified resource from storage.

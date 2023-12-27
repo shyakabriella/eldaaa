@@ -52,6 +52,7 @@
       <th>Name</th>
       <th>National Id</th>
       <th>Phone</th>
+      <th>Email</th>
       <th>Gender</th>
       <th>province</th>
       <th>District</th>
@@ -73,6 +74,7 @@
     <td>{{ $app->name }}</td>
     <td>{{ $app->nid }}</td>
     <td>{{ $app->phone }}</td>
+    <td>{{ $app->email }}</td>
     <td>{{ $app->gender }}</td>
     <td>
       <span class="pip-rwanda-location" data-type="0" data-element="{{$app->Province}}"></span>

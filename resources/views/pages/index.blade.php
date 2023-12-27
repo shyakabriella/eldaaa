@@ -312,6 +312,7 @@ input.invalid {
   <p><input name="name" placeholder="Names.." oninput="this.className = ''"></p>
   <p><input name="nid" placeholder="National id..." oninput="this.className = ''"></p>
   <p><input name="phone" placeholder="Phone..." oninput="this.className = ''"></p>
+  <p><input name="email" placeholder="email..." oninput="this.className = ''"></p>
   
   <label for="combo">Select gender:</label>
   <select name="gender" id="combo" name="combo">
@@ -321,8 +322,6 @@ input.invalid {
     <!-- Add more options as needed -->
   </select>
 </div>
-
-
 
 <div class="tab">Location Information:
   <select class="combo" id="the_province_select_option" name="province" id="the_province_select_option" name="combo">
