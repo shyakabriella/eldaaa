@@ -136,6 +136,13 @@ return array(
          */
         "pdf_backend" => "CPDF",
 
+        // config/dompdf.php
+
+        'driver' => 'dompdf',
+
+        'fontDir' => storage_path('fonts/'),
+        'fontCache' => storage_path('fonts/'),
+
         /**
          * PDFlib license key
          *

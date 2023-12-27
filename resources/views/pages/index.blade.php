@@ -103,13 +103,6 @@
                             <li class="nav-item" role="presentation">
                                 <button class="btn btn-info" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" data-toggle="modal" data-target="#myModal"  aria-selected="false">Elders application</button>
                             </li>
-                            <!-- <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Disabilit-Assessment</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Desease-Assessment</button>
-                            </li> -->
-
                            
                         </ul>
                     </div>

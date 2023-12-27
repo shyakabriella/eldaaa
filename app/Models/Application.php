@@ -27,6 +27,7 @@ class Application extends Model
         'asset',
         'education',
         'disability',
-        'desease'
+        'desease',
+        'status'
     ];
 }

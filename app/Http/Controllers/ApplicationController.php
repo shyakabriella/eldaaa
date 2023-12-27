@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use \PDF;
+
+
 
 class ApplicationController extends Controller
 {
@@ -100,9 +103,7 @@ class ApplicationController extends Controller
      /**
  
       * Show the form for editing the specified resource.
- 
       *
- 
       * @param  \App\Product  $product
       * @return \Illuminate\Http\Response
       */
@@ -132,6 +133,74 @@ class ApplicationController extends Controller
          return redirect()->route('events.index')
                        ->with('success','events updated successfully');
      }
+
+
+// ... your other methods ...
+
+public function approve(Application $application)
+    {
+        // Implement the logic to approve the application
+        $application->update(['status' => 'approved']);
+
+        // Redirect to the approved applications view
+        return redirect()->route('approved-applications.index')
+            ->with('success', 'Application approved successfully');
+    }
+
+public function reject(Application $application)
+{
+    // Implement the logic to reject the application
+    $application->delete();
+
+    return redirect()->route('apply.index')
+        ->with('success', 'Application rejected successfully');
+}
+
+
+
+ // ... your other methods ...
+
+ public function approvedApplications()
+ {
+     $approvedApplications = Application::where('status', 'approved')->get();
+     return view('pdf.approved-applications', ['applications' => $approvedApplications]);
+ }
+
+ public function generateApprovedPDF()
+ {
+     $approvedApplications = Application::where('status', 'approved')->get();
+
+     // Check if there are approved applications
+     if ($approvedApplications->isEmpty()) {
+         return response()->json(['message' => 'No approved applications to generate PDF']);
+     }
+
+     // Generate PDF
+     $pdf = PDF::loadView('pdf.approved-applications', ['applications' => $approvedApplications]);
+
+     // Save or output the PDF as needed
+     // For example, save to storage
+     
+     $pdf->save(storage_path('app/approved-applications.pdf'));
+
+
+
+     return response()->json(['message' => 'PDF generated successfully']);
+ }
+
+ public function deleteRejectedApplications()
+ {
+     Application::where('status', 'rejected')->delete();
+
+     return redirect()->route('apply.index')
+         ->with('success', 'Rejected applications deleted successfully');
+ }
+
+
+
+
+
+
  
      /**
  
@@ -148,4 +217,8 @@ class ApplicationController extends Controller
          return redirect()->route('events.index')
                          ->with('success','Events deleted successfully');
      }
+
+
+
+
 }

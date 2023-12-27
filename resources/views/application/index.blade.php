@@ -1,5 +1,10 @@
 @extends('layouts.auth')
 @section('content')
+<head>
+    <!-- ... other head elements ... -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -86,20 +91,41 @@
     <td>{{ $app->education }}</td>
     <td>{{ $app->disability }}</td>
     <td>{{ $app->desease }}</td>
-      <td>
-                <form action="" method="POST">
-                    <a class="btn btn-info" href="">Approve</a>
-                   
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Reject</button>
-                   
-                </form>
-	        </td>
+    
+    <td>
+    <form action="{{ route('applications.approve', $app->id) }}" method="POST">
+        <button type="submit" class="btn btn-info">Approve</button>
+        @csrf
+    </form>
+
+    <form id="deleteForm{{$app->id}}" action="{{ route('applications.reject', $app->id) }}" method="POST">
+        <button type="button" onclick="confirmDelete({{$app->id}})" class="btn btn-danger">Reject</button>
+        @csrf
+    </form>
+</td>
     </tr>
   </tbody>
   @endforeach
 </table>
+
+<script>
+        function confirmDelete(applicationId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You wont to reject this application!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, reject it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, submit the form
+                    document.getElementById('deleteForm' + applicationId).submit();
+                }
+            });
+        }
+    </script>
   
 <p class="text-center text-primary"><small>E|C|F</small></p>
 @endsection

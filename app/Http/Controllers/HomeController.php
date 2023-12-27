@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
-use App\Models\Patient;
+
+use App\Models\Application;
   
 class HomeController extends Controller
 {
@@ -29,8 +30,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-      
-        return view('home');
+        $apply = Application::all();
+        $totalApplications = Application::count();
+        $approvedApplications = Application::where('status', 'approved')->count();
+        //dd($approvedApplications);
+        return view('home')
+        ->with('totalApplications',$totalApplications);
       
     } 
   
