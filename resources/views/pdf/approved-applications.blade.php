@@ -92,7 +92,7 @@
                 document.getElementById('downloadPdfBtn{{ $province }}').addEventListener('click', function () {
                     // Create a new div to include the title and the specific table
                     const content{{ $province }} = document.createElement('div');
-                    content{{ $province }}.innerHTML = '<h1 style="text-align: center;">Approved Applications in Province: {{ $province }}</h1>';
+                    content{{ $province }}.innerHTML = '<br><h6>Kigali-city</h6> <img style="position:relative; right:95px;" src="/images/m.png" height="90px;" alt=""><h6>Minaloc<h6><h6>Auca-Gishushu<h6><br><br><br><h3 style="text-align: center;">Approved Applications in  Province</h3><p>I hope this letter finds you well. We are pleased to provide you with the Approved Elders Report, outlining the details of elders whose applications have been successfully approved by our organization. below there is list of elders depend on Province Thank you.<p>';
 
                     // Append the existing table to the new div
                     const table{{ $province }} = document.querySelectorAll('table')[{{ $loop->index }}];

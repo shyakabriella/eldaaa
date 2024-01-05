@@ -103,8 +103,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('application')}}">
-            
+          <a class="nav-link text-white " href="{{ url('apply') }}"> 
             <span class="nav-link-text ms-1">Apply-For-Elder</span>
           </a>
         </li>
