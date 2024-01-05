@@ -13,14 +13,14 @@ class DeseaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     function __construct()
-     {
-          $this->middleware('permission:desease-list|desease-create|desease-edit|desease-delete', ['only' => ['index','show']]);
-          $this->middleware('permission:desease-create', ['only' => ['create','store']]);
-          $this->middleware('permission:desease-edit', ['only' => ['edit','update']]);
-          $this->middleware('permission:desease-delete', ['only' => ['destroy']]);
+    //  function __construct()
+    //  {
+    //       $this->middleware('permission:desease-list|desease-create|desease-edit|desease-delete', ['only' => ['index','show']]);
+    //       $this->middleware('permission:desease-create', ['only' => ['create','store']]);
+    //       $this->middleware('permission:desease-edit', ['only' => ['edit','update']]);
+    //       $this->middleware('permission:desease-delete', ['only' => ['destroy']]);
  
-     }
+    //  }
  
      /**
       * Display a listing of the resource.

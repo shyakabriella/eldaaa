@@ -1,6 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Include SweetAlert CSS and JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
                 <div class="container">
@@ -9,6 +13,19 @@
 
                         <div class="col-lg-8 col-12 mx-auto">
                             <h2 class="text-white text-center">Rwandan.Elders.Care.Facilities System</h2>
+
+                            @if ($message = Session::get('success'))
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Success!',
+                                        text: '{{ $message }}',
+                                        confirmButtonText: 'OK'
+                                    });
+                                });
+                            </script>
+                        @endif
 
                             <h6 class="text-center">platform for Elders care facilities for Rwandan Citisen</h6>
                             <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
@@ -20,12 +37,12 @@
                                     <button type="submit" class="form-control">Search</button>
                                 </div>
                             </form>
-
                         </div>
-
                     </div>
                 </div>
             </section>
+
+         
             <section class="featured-section">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -232,7 +249,32 @@
                                 </div>
 
 
-<body>
+                    <!-- ... Your existing HTML content ... -->
+
+                    <script>
+                        // Check if the session has a 'success' message and display SweetAlert accordingly
+                        @if(session('success'))
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: '{{ session('success') }}',
+                                confirmButtonText: 'OK'
+                            });
+                        @endif
+
+                        // You can also use SweetAlert in other places as needed
+                        function showAlert() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: 'Your message here',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    </script>
+
+                    <!-- ... Your existing HTML content ... -->
+
 
     <div class="container">
        
@@ -302,6 +344,22 @@ input.invalid {
   background-color: #04AA6D;
 } 
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Check if the URL has a 'success' query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            // Trigger SweetAlert for successful form submission
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Your registration was successful!',
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+</script>
 <form  action="{{ route('apply.store') }}" id="regForm" method="POST">
 @csrf
 
@@ -316,9 +374,9 @@ input.invalid {
   
   <label for="combo">Select gender:</label>
   <select name="gender" id="combo" name="combo">
-    <option value="option1">Male</option>
-    <option value="option2">Female</option>
-    <option value="option3">Other</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
     <!-- Add more options as needed -->
   </select>
 </div>
@@ -542,6 +600,17 @@ function fixStepIndicator(n) {
 
 </body>
 </html>
+
+<script>
+    @if(session('sweetAlert'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('sweetAlert') }}',
+            confirmButtonText: 'OK'
+        });
+    @endif
+</script>
 
 
 <script>

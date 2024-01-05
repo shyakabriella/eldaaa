@@ -17,16 +17,16 @@ class AssetController extends Controller
 
      */
 
-     function __construct()
+    //  function __construct()
 
-     {
+    //  {
  
-          $this->middleware('permission:asset-list|asset-create|asset-edit|asset-delete', ['only' => ['index','show']]);
-          $this->middleware('permission:asset-create', ['only' => ['create','store']]);
-          $this->middleware('permission:asset-edit', ['only' => ['edit','update']]);
-          $this->middleware('permission:asset-delete', ['only' => ['destroy']]);
+    //       $this->middleware('permission:asset-list|asset-create|asset-edit|asset-delete', ['only' => ['index','show']]);
+    //       $this->middleware('permission:asset-create', ['only' => ['create','store']]);
+    //       $this->middleware('permission:asset-edit', ['only' => ['edit','update']]);
+    //       $this->middleware('permission:asset-delete', ['only' => ['destroy']]);
  
-     }
+    //  }
  
      /**
       * Display a listing of the resource.

@@ -88,7 +88,7 @@ class ApplicationController extends Controller
          ]);
          Application::create($request->all());
          return redirect()->route('/')
-                         ->with('success','Event created successfully.');
+                         ->with('success','Application Submitted successfully.');
      }
      /**
  
@@ -170,11 +170,37 @@ public function reject(Application $application)
 
  // ... your other methods ...
 
- public function approvedApplications()
- {
-     $approvedApplications = Application::where('status', 'approved')->get();
-     return view('pdf.approved-applications', ['applications' => $approvedApplications]);
- }
+// ...
+
+public function approvedApplications(Request $request)
+{
+    $provinceFilter = $request->input('province_filter');
+    $districtFilter = $request->input('district_filter');
+
+    $approvedApplications = Application::where('status', 'approved');
+
+    // Filter by province if provided
+    if ($provinceFilter) {
+        $approvedApplications->where('province', $provinceFilter);
+    }
+
+    // Filter by district if provided
+    if ($districtFilter) {
+        $approvedApplications->where('district', $districtFilter);
+    }
+
+    $approvedApplications = $approvedApplications->get();
+
+    return view('pdf.approved-applications', [
+        'applications' => $approvedApplications,
+        'provinceFilter' => $provinceFilter,
+        'districtFilter' => $districtFilter,
+    ]);
+}
+
+// ...
+
+ 
 
  public function generateApprovedPDF()
  {

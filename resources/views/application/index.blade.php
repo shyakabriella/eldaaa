@@ -77,17 +77,20 @@
     <td>{{ $app->email }}</td>
     <td>{{ $app->gender }}</td>
     <td>
-      <span class="pip-rwanda-location" data-type="0" data-element="{{$app->Province}}"></span>
+      <span class="pip-rwanda-location" data-type="0" data-element="{{$app->province}}"></span>
     </td>
     <td>
-      <span class="pip-rwanda-location" data-type="1" data-element="{{$app->District}}"></span>
+      <span class="pip-rwanda-location" data-type="1" data-element="{{$app->district}}"></span>
     </td>
 
     <td>
-      <span class="pip-rwanda-location" data-type="2" data-element="{{$app->Sector}}"></span>
+      <span class="pip-rwanda-location" data-type="2" data-element="{{$app->sector}}"></span>
     </td>
 
-    <td>{{ $app->village }}</td>
+    <td>
+      <span class="pip-rwanda-location" data-type="2" data-element="{{$app->village}}"></span>
+    </td>
+
     <td>{{ $app->ubudehe }}</td>
     <td>{{ $app->asset }}</td>
     <td>{{ $app->education }}</td>
@@ -127,7 +130,9 @@
                 }
             });
         }
-    </script>
+</script>
+
+
   
 <p class="text-center text-primary"><small>E|C|F</small></p>
 @endsection

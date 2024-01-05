@@ -17,16 +17,16 @@ class DisabilityController extends Controller
 
      */
 
-     function __construct()
+    //  function __construct()
 
-     {
+    //  {
  
-          $this->middleware('permission:disability-list|disability-create|disability-edit|disability-delete', ['only' => ['index','show']]);
-          $this->middleware('permission:disability-create', ['only' => ['create','store']]);
-          $this->middleware('permission:disability-edit', ['only' => ['edit','update']]);
-          $this->middleware('permission:disability-delete', ['only' => ['destroy']]);
+    //       $this->middleware('permission:disability-list|disability-create|disability-edit|disability-delete', ['only' => ['index','show']]);
+    //       $this->middleware('permission:disability-create', ['only' => ['create','store']]);
+    //       $this->middleware('permission:disability-edit', ['only' => ['edit','update']]);
+    //       $this->middleware('permission:disability-delete', ['only' => ['destroy']]);
  
-     }
+    //  }
  
      /**
       * Display a listing of the resource.

@@ -67,6 +67,12 @@ Route::get('/applications', 'ApplicationController@index')->name('applications.i
 
 
 
+Route::get('/approved-applications', [ApplicationController::class, 'index'])->name('applications.index');
+Route::get('/generate-approved-pdf', [ApplicationController::class, 'generatePdf'])->name('applications.generate-approved-pdf');
+
+
+
+
   
     Route::delete('applications/delete-rejected', [ApplicationController::class, 'deleteRejectedApplications']);
 
